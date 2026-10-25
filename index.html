@@ -552,23 +552,23 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
     <div class="mission">
       <span class="pill">MISI MANDIRI</span>
       <p><b>Apakah benda yang kamu amati bergerak dengan kecepatan tetap (GLB) atau mengalami percepatan (GLBB)?</b></p>
-      Amati gerak benda di sekitarmu (mobil-mobilan, bola menggelinding, kelereng, atau tetesan air) atau gunakan data simulasi di bawah ini.
+      Siapkan benda yang dapat digerakkan atau yang dapat bergerak sendiri, misalnya mobil-mobilan, motor, bola, atau kelereng. Siapkan stopwatch dan pemberi tanda jarak di permukaan dimana benda bergerak, misalnya pulpen atau spidol. 
     </div>
     <h3>Langkah Kerja Percobaan</h3>
     <ol>
       <li>Pilih benda yang aman untuk diamati di rumah.</li>
-      <li>Tentukan titik awal sebagai posisi nol (0 m).</li>
-      <li>Catat posisi benda pada setiap selang waktu 1 detik (detik ke-0 sampai detik ke-5).</li>
-      <li>Isikan data hasil pengamatanmu pada tabel di bawah.</li>
+      <li>Tentukan/tandai titik awal sebagai posisi nol (0 m).</li>
+      <li>Gerakkan benda, dan tandai posisi benda pada setiap selang waktu 1 detik (detik ke-0 sampai detik ke-5).</li>
+      <li>Ukur jarak tersebut dari posisi awalnya, dan isikan data hasil pengamatanmu pada tabel di bawah.</li>
       <li>Klik <b>"Analisis Gerak"</b> untuk melihat bentuk grafik dan perhitungannya.</li>
     </ol>
-    <p class="small">Gunakan satuan meter (m) untuk posisi dan sekon (s) untuk waktu. Jika kesulitan mengukur langsung di rumah, kamu bisa menggunakan tombol <b>"Isi Data Contoh"</b>.</p>
+    <p class="small">Gunakan satuan meter (m) untuk posisi dan sekon (s) untuk waktu. Contoh hasil pengukuran, dapat kamu lihat dengan klik tombol <b>"Isi Data Contoh"</b>.</p>
   </section>
 
   <!-- TABEL PENGAMATAN -->
   <section class="card">
     <h2>📋 Tabel Pengamatan Rumah</h2>
-    <p class="small">Isi posisi benda pada setiap waktu. Angka boleh desimal (contoh: 1.5 atau 4.2).</p>
+    <p class="small">Isi posisi benda pada setiap waktu. Angka boleh desimal, gunakan titik untuk menggantikan koma (contoh: 1.5 atau 4.2).</p>
     <div class="table-wrap">
       <table>
         <thead>
@@ -603,7 +603,7 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
     <textarea id="q1" rows="3" placeholder="Jelaskan berdasarkan data pengamatan yang kamu dapatkan..."></textarea>
 
     <label for="q2">2. Berdasarkan pola data dan bentuk grafik di atas, apakah benda mengalami GLB atau GLBB? Sebutkan alasannya!</label>
-    <textarea id="q2" rows="3" placeholder="Tuliskan alasanmu (misal: karena jarak tiap detik sama / karena jarak bertambah makin cepat)..."></textarea>
+    <textarea id="q2" rows="3" placeholder="Tuliskan alasanmu ..."></textarea>
 
     <label for="q3">3. Jika gerak benda diteruskan dengan pola yang sama, berapakah perkiraan posisi benda pada detik ke-6?</label>
     <textarea id="q3" rows="3" placeholder="Tuliskan hasil prediksi dan cara menghitungnya..."></textarea>
@@ -613,26 +613,26 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
 
     <!-- SOAL TAMBAHAN 1: BUGATTI VEYRON -->
     <label for="bugatti_dik">5. 🏎️ <b>Soal Tantangan GLBB: Bugatti Veyron Super Sport</b></label>
-    <p class="small" style="margin-top:-4px;">Mobil Bugatti Veyron Super Sport dapat berubah dari keadaan diam hingga mencapai kelajuan <b>95 km/jam</b> dalam waktu <b>2 detik</b>. Berapa jarak tempuh mobil saat mencapai kelajuan tersebut?</p>
+    <p class="small" style="margin-top:-4px;">Mobil Bugatti Veyron Super Sport dapat berubah dari keadaan diam hingga mencapai kelajuan <b>95 km/jam</b> dalam waktu <b>2 detik</b>. Berapa meter jarak tempuh mobil saat mencapai kelajuan tersebut?</p>
     <div class="sub-form-box">
       <label for="bugatti_dik" style="margin-top:0;">a. Diketahui:</label>
-      <input id="bugatti_dik" placeholder="Contoh: v0 = 0 m/s, vt = 95 km/jam = ... m/s, t = 2 s">
+      <input id="bugatti_dik" placeholder="Catatan: Konversikan terlebih dahulu satuan km/jam ke m/s. v0 = ... m/s, vt = ... km/jam = ... m/s, t = ... s">
 
       <label for="bugatti_dit">b. Ditanyakan:</label>
-      <input id="bugatti_dit" placeholder="Contoh: Jarak tempuh (s) = ...?">
+      <input id="bugatti_dit" placeholder="...?">
 
       <label for="bugatti_jawab">c. Penyelesaian & Jawaban Akhir:</label>
-      <textarea id="bugatti_jawab" rows="3" placeholder="Tuliskan rumus percepatan (a), rumus jarak (s), dan langkah pengerjaannya sampai ketemu jawaban akhir dalam meter..."></textarea>
+      <textarea id="bugatti_jawab" rows="3" placeholder="Cari percepatan (a) terlebih dahulu, lalu cari jarak tempuhnya. Tuliskan langkah pengerjaannya sampai ketemu jawaban akhir dalam meter..."></textarea>
     </div>
 
     <!-- SOAL TAMBAHAN 2: ROLEPLAY PENGACARA FISIKA -->
     <label for="q_pengacara">6. ⚖️ <b>Studi Kasus Pembelaan Hukum: Pengacara & Konsep Fisika</b></label>
     <p class="small" style="margin-top:-4px;"><b>Kasus Pengadilan:</b> Posisikan dirimu sebagai seorang pengacara yang membela Klien (Pengemudi A) di pengadilan karena dituduh berkendara melebihi batas kecepatan.</p>
     <p class="small" style="background:#fff3cd; padding:8px 12px; border-radius:8px; color:#856404; border-left:3px solid #ffeeba;">
-      📌 <b>Latar Belakang Kasus:</b> Polisi menduga Pengemudi A mengebut karena kendaraannya berada tepat bersebelahan dengan kendaraan lain yang melaju melebihi batas kecepatan. Pengemudi A membantah dan menyatakan dia berkendara normal, melainkan kendaraan keduabah yang menyalipnya. Namun, Jaksa Penuntut membantah dengan argumen: <i>"Jika dua kendaraan berada tepat berpapasan/bersebelahan, maka laju (kecepatan) keduanya PASTI sama."</i>
+      📌 <b>Latar Belakang Kasus:</b> Polisi menduga Pengemudi A mengebut karena kendaraannya berada tepat bersebelahan dengan kendaraan lain yang melaju melebihi batas kecepatan. Pengemudi A membantah dan menyatakan dia berkendara normal, melainkan kendaraan kedua yang menyalipnya. Namun, Jaksa Penuntut membantah dengan argumen: <i>"Jika dua kendaraan berada tepat berpapasan/bersebelahan, maka laju (kecepatan) keduanya PASTI sama."</i>
     </p>
     <label for="q_pengacara">Sebagai pengacara, argumen fisika apa yang akan kamu ungkapkan di depan hakim untuk mematahkan pendapat penuntut agar Pengemudi A bebas dari tuduhan?</label>
-    <textarea id="q_pengacara" rows="4" placeholder="Gunakan konsep kelajuan relatif, posisi menyalip, atau konsep GLB/GLBB untuk menyusun argumen pembelaanmu..."></textarea>
+    <textarea id="q_pengacara" rows="4" placeholder="Gunakan konsep konsep GLB/GLBB pada kedua mobil yang berpapasan untuk menyusun argumen pembelaanmu..."></textarea>
   </section>
 
   <!-- PENGUMPULAN & FINISH -->
@@ -653,7 +653,7 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
     <div id="statusKirim" class="status-box"></div>
     <div id="hasilAkhir" class="result"></div>
 
-    <!-- KOTAK TAMPILAN RINGKASAN JAWABAN (DITAMPILKAN DI LAYAR SAMA) -->
+    <!-- KOTAK TAMPILAN RINGKASAN JAWABAN -->
     <div id="displayRingkasan" style="display:none; margin-top:16px; background:#f0fdf4; border:2px solid #a7f3d0; padding:16px; border-radius:14px;">
       <label style="margin-top:0; color:#166534; font-size:14px;">📝 <b>Ringkasan Jawaban Siswa (Sudah Tersalin ke Clipboard):</b></label>
       <p class="small" style="margin-bottom:8px; color:#15803d;">Teks di bawah ini sudah tersalin. Siswa bisa membaca langsung dari kotak di bawah ini untuk dicatat ke dalam buku catatan Fisika:</p>
@@ -975,64 +975,86 @@ function kirimKeDrive() {
   })
   .catch(err => {
     statusBox.className = "status-box status-error";
-    statusBox.innerHTML = "⚠️ <b>Gagal Mengirim Otomatis.</b> Pastikan koneksi internet aktif atau gunakan tombol 'Salin Ringkasan Jawaban Digital' di bawah.";
+    statusBox.innerHTML = "⚠️ <b>Gagal Mengirim Otomatis.</b> Pastikan koneksi internet aktif atau gunakan tombol 'Salin & Tampilkan Ringkasan Jawaban Digital' di bawah.";
   });
 }
 
-// --- SUMMARY COPY & DISPLAY FUNCTION ---
+// --- SUMMARY COPY & DISPLAY FUNCTION (DENGAN VALIDASI KELENGKAPAN) ---
 function salinJawaban() {
   const nama = document.getElementById("nama").value.trim();
   const kelas = document.getElementById("kelas").value;
-  const absen = document.getElementById("absen").value;
+  const absen = document.getElementById("absen").value.trim();
   const data = ambilData();
-  const jawaban = ["q1", "q2", "q3", "refleksi"].map(id =>
-    document.getElementById(id).value.trim()
-  );
+  const q1 = document.getElementById("q1").value.trim();
+  const q2 = document.getElementById("q2").value.trim();
+  const q3 = document.getElementById("q3").value.trim();
+  const refleksi = document.getElementById("refleksi").value.trim();
   const bugattiDik = document.getElementById("bugatti_dik").value.trim();
   const bugattiDit = document.getElementById("bugatti_dit").value.trim();
   const bugattiJawab = document.getElementById("bugatti_jawab").value.trim();
   const qPengacara = document.getElementById("q_pengacara").value.trim();
 
+  // Cek Kelengkapan Masing-Masing Bagian
+  const lengkapIdentitas = nama && kelas && absen;
+  const lengkapData = data.every(v => v !== null && Number.isFinite(v));
+  const lengkapAnalisis = q1 && q2 && q3 && refleksi;
+  const lengkapBugatti = bugattiDik && bugattiDit && bugattiJawab;
+  const lengkapPengacara = qPengacara;
+
+  // Jika Ada yang Belum Lengkap, Tampilkan Peringatan
+  if (!lengkapIdentitas || !lengkapData || !lengkapAnalisis || !lengkapBugatti || !lengkapPengacara) {
+    let pesan = "⚠️ JAWABAN BELUM BISA DISALIN!\nMohon lengkapi bagian berikut terlebih dahulu:\n\n";
+    if (!lengkapIdentitas) pesan += "• Identitas (Nama, Kelas, No. Absen)\n";
+    if (!lengkapData) pesan += "• Tabel Pengamatan Posisi (Detik 0 - 5)\n";
+    if (!lengkapAnalisis) pesan += "• Ruang Analisis (Pertanyaan 1 sampai 4)\n";
+    if (!lengkapBugatti) pesan += "• Soal Bugatti Veyron (Diketahui, Ditanyakan, & Jawaban)\n";
+    if (!lengkapPengacara) pesan += "• Argumen Pengacara Fisika (Soal No. 6)\n";
+    
+    alert(pesan);
+    return;
+  }
+
+  // Jika Semua Sudah Terisi Lengkap, Buat Ringkasan Teks
   const ringkasan = [
     "------------------------------------------",
     "MISI DETEKTIF GERAK - FISIKA SMANPAS",
     "------------------------------------------",
     "Identitas Siswa:",
-    "Nama     : " + (nama || "-"),
-    "Kelas    : " + (kelas || "-"),
-    "No. Absen: " + (absen || "-"),
+    "Nama     : " + nama,
+    "Kelas    : " + kelas,
+    "No. Absen: " + absen,
     "",
     "Tabel Pengamatan Posisi (m):",
-    ...waktu.map((t, i) => `  - t = ${t} s: ${data[i] ?? "(kosong)"} m`),
+    ...waktu.map((t, i) => `  - t = ${t} s: ${data[i]} m`),
     "",
     "Hasil Analisis Pertanyaan:",
     "1. Perubahan Posisi:",
-    "   " + (jawaban[0] || "-"),
+    "   " + q1,
     "2. Jenis Gerak (GLB/GLBB) & Alasan:",
-    "   " + (jawaban[1] || "-"),
+    "   " + q2,
     "3. Prediksi Posisi Detik ke-6:",
-    "   " + (jawaban[2] || "-"),
+    "   " + q3,
     "4. Kesimpulan & Refleksi Belajar:",
-    "   " + (jawaban[3] || "-"),
+    "   " + refleksi,
     "",
     "5. Hitungan Bugatti Veyron (GLBB):",
-    "   - Diketahui : " + (bugattiDik || "-"),
-    "   - Ditanyakan: " + (bugattiDit || "-"),
-    "   - Jawaban   : " + (bugattiJawab || "-"),
+    "   - Diketahui : " + bugattiDik,
+    "   - Ditanyakan: " + bugattiDit,
+    "   - Jawaban   : " + bugattiJawab,
     "",
     "6. Pembelaan Pengacara Fisika:",
-    "   " + (qPengacara || "-"),
+    "   " + qPengacara,
     "------------------------------------------"
   ].join("\n");
 
-  // Tampilkan Teks di Kotak Layar
+  // Tampilkan Teks Ringkasan di Layar
   const boxDisplay = document.getElementById("displayRingkasan");
   const txtArea = document.getElementById("txtRingkasan");
   txtArea.value = ringkasan;
   boxDisplay.style.display = "block";
   boxDisplay.scrollIntoView({ behavior: "smooth" });
 
-  // Salin ke Clipboard
+  // Salin ke Clipboard HP Siswa
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(ringkasan)
       .then(() => alert("📋 Ringkasan jawaban berhasil disalin dan ditampilkan di layar!\n\nSilakan baca dari kotak hijau di bawah untuk dicatat ke dalam buku catatanmu."))
