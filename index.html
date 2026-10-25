@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detektif Gerak | Fisika SMANPAS</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --green: #36765b;
+  --light: #eaf5ed;
+  --cream: #fffaf0;
+  --orange: #d88960;
+  --dark: #243b30;
+  --muted: #718078;
+  --blue: #2b6cb0;
+  --blue-light: #ebf8ff;
+  --red: #c53030;
+  --red-light: #fff5f5;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7f2;
+  color: var(--dark);
+}
+header {
+  background: linear-gradient(135deg, #245640, #579873);
+  color: white;
+  padding: 30px 18px 36px;
+  border-radius: 0 0 28px 28px;
+}
+.header-inner, main {
+  max-width: 900px;
+  margin: auto;
+}
+.tag {
+  display: inline-block;
+  background: #ffffff25;
+  border: 1px solid #ffffff60;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+}
+h1 { font-size: clamp(25px, 5vw, 38px); margin: 15px 0 8px; }
+header p { line-height: 1.7; margin-bottom: 0; }
+main { padding: 18px 14px 40px; }
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px #183d2610;
+}
+h2 { font-size: 19px; margin: 0 0 14px; color: var(--green); display: flex; align-items: center; gap: 8px; }
+h3 { font-size: 16px; margin: 16px 0 8px; color: var(--dark); }
+p, li { line-height: 1.7; font-size: 14px; }
+.small { color: var(--muted); font-size: 13px; }
+label { display: block; font-size: 13px; font-weight: 600; margin: 12px 0 6px; }
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d6e1d8;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  background: #fff;
+  color: var(--dark);
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid #a4d4b3;
+  border-color: var(--green);
+}
+.identity {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+}
+.mission {
+  background: var(--cream);
+  border-left: 5px solid var(--orange);
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.case-card {
+  background: #f8faf7;
+  border: 1px solid #dbe6dd;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.case-card.news {
+  background: var(--red-light);
+  border-color: #feb2b2;
+}
+.case-card.gmaps {
+  background: var(--blue-light);
+  border-color: #bee3f8;
+}
+.pill {
+  display: inline-block;
+  background: var(--light);
+  color: var(--green);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 300px; }
+th, td {
+  border-bottom: 1px solid #e7eee8;
+  padding: 9px 7px;
+  text-align: center;
+  font-size: 13px;
+}
+th { background: #eef6ef; color: var(--dark); }
+td input {
+  text-align: center;
+  min-width: 75px;
+  padding: 9px 5px;
+}
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 17px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
+}
+button:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.primary { background: var(--green); color: white; }
+.secondary { background: #eaf4ec; color: var(--green); }
+.orange-btn { background: var(--orange); color: white; }
+.blue-btn { background: var(--blue); color: white; }
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 15px 0;
+}
+.stat {
+  background: #f0f7f1;
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-align: center;
+}
+.stat strong { display: block; font-size: 19px; color: var(--green); }
+.stat span { font-size: 11px; color: var(--muted); }
+#graph {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fcfdfb;
+  border: 1px solid #e3ece4;
+  border-radius: 12px;
+}
+.result {
+  display: none;
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--light);
+  line-height: 1.7;
+}
+
+/* Materi & Comparison Styles */
+.materi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.materi-box {
+  background: #f8faf7;
+  border: 1px solid #dbe6dd;
+  border-radius: 14px;
+  padding: 16px;
+}
+.materi-box h4 {
+  margin: 0 0 8px;
+  color: var(--green);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.badge-glb { background: #e2f0d9; color: #385d25; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; }
+.badge-glbb { background: #fce4d6; color: #c65911; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; }
+
+.formula-box {
+  background: #fff;
+  border-left: 3px solid var(--green);
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+/* Canvas Animation Styles */
+.anim-container {
+  background: #2d3748;
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  margin: 15px 0;
+}
+#simCanvas {
+  width: 100%;
+  max-width: 700px;
+  height: 180px;
+  background: #1a202c;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 12px;
+}
+.anim-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.anim-info {
+  display: flex;
+  justify-content: space-around;
+  background: #3a4a61;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+/* Instructions Banner */
+.instruction-card {
+  background: #fff7ed;
+  border: 2px dashed #f97316;
+  border-radius: 16px;
+  padding: 18px;
+  margin-top: 20px;
+}
+.instruction-card h3 {
+  color: #c2410c;
+  margin-top: 0;
+}
+.step-list {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+.step-list li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.notice {
+  padding: 12px 15px;
+  background: #fff4e7;
+  color: #87542d;
+  border-radius: 10px;
+  font-size: 13px;
+  border-left: 4px solid var(--orange);
+}
+
+.status-box {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  display: none;
+}
+.status-success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.status-loading { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+.status-error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+/* Gaya untuk Mini Grafik Materi GLB & GLBB */
+.graph-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+.graph-item {
+  background: #ffffff;
+  border: 1px solid #dbe6dd;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+.graph-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.graph-item svg {
+  width: 100%;
+  height: 90px;
+  display: block;
+}
+
+@media (max-width: 650px) {
+  .identity { grid-template-columns: 1fr 1fr; }
+  .identity .full { grid-column: 1 / -1; }
+  .materi-grid { grid-template-columns: 1fr; }
+  .card { padding: 17px; }
+  .stats { gap: 6px; }
+  .stat strong { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="header-inner">
+    <span class="tag">🔎 MISI FISIKA KELAS X</span>
+    <h1>Detektif Gerak</h1>
+    <p>Pelajari konsepnya, amati simulasi visualnya, selidiki gerak benda, dan kirimkan bukti penyelidikanmu!</p>
+    <p><b>Fisika SMAN 1 Pasawahan</b> · GLB & GLBB</p>
+    <p style="font-size: 13px; margin-top: 6px; opacity: 0.95;"> <b>Guru Mata Pelajaran:</b> Mamay Nurmala Nupuz, S.Pd.</p>
+  </div>
+</header>
+
+<main>
+  <!-- IDENTITAS -->
+  <section class="card">
+    <h2>🧑‍🔬 Identitas Detektif</h2>
+    <div class="identity">
+      <div class="full">
+        <label for="nama">Nama Lengkap</label>
+        <input id="nama" placeholder="Tuliskan nama lengkapmu">
+      </div>
+      <div>
+        <label for="kelas">Kelas</label>
+        <select id="kelas">
+          <option value="">Pilih kelas</option>
+          <option>10 E5</option>
+          <option>10 E6</option>
+          <option>10 E7</option>
+          <option>10 E8</option>
+          <option>10 E9</option>
+        </select>
+      </div>
+      <div>
+        <label for="absen">No. Absen</label>
+        <input id="absen" type="number" min="1" placeholder="Nomor">
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKSI MATERI PRE-PRACTICUM -->
+  <section class="card">
+    <h2>📖 Materi Pembekalan: GLB vs GLBB</h2>
+    <p>Sebelum memulai percobaan di rumah, pahami dahulu landasan teori mengenai konsep gerak berikut ini.</p>
+    
+    <div class="materi-grid">
+      <!-- GLB -->
+      <div class="materi-box">
+        <h4><span class="badge-glb">GLB</span> Gerak Lurus Beraturan</h4>
+        <p><b>Pengertian:</b> Gerak benda pada lintasan lurus dengan <b>kecepatan konstan</b> (<i>a = 0</i>).</p>
+        <p><b>Ciri Khas:</b> Kecepatan tetap, jarak bertambah secara linier seiring waktu.</p>
+        
+        <div class="formula-box">
+          Rumus GLB:<br>
+          s = v × t
+        </div>
+
+        <!-- Mini Grafik GLB -->
+        <div class="graph-preview-grid">
+          <div class="graph-item">
+            <div class="graph-title">Grafik v - t (Kecepatan)</div>
+            <svg viewBox="0 0 120 80">
+              <line x1="20" y1="70" x2="110" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <line x1="20" y1="10" x2="20" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <text x="110" y="78" font-size="8" fill="#52665a">t</text>
+              <text x="10" y="15" font-size="8" fill="#52665a">v</text>
+              <line x1="20" y1="35" x2="105" y2="35" stroke="#36765b" stroke-width="2.5"/>
+            </svg>
+            <span class="small" style="font-size: 10px;">v Tetap (Horizontal)</span>
+          </div>
+
+          <div class="graph-item">
+            <div class="graph-title">Grafik s - t (Jarak)</div>
+            <svg viewBox="0 0 120 80">
+              <line x1="20" y1="70" x2="110" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <line x1="20" y1="10" x2="20" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <text x="110" y="78" font-size="8" fill="#52665a">t</text>
+              <text x="10" y="15" font-size="8" fill="#52665a">s</text>
+              <line x1="20" y1="65" x2="100" y2="20" stroke="#36765b" stroke-width="2.5"/>
+            </svg>
+            <span class="small" style="font-size: 10px;">s Naik Linier</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GLBB -->
+      <div class="materi-box">
+        <h4><span class="badge-glbb">GLBB</span> Gerak Lurus Berubah Beraturan</h4>
+        <p><b>Pengertian:</b> Gerak benda pada lintasan lurus dengan <b>percepatan konstan</b> (<i>a ≠ 0</i>).</p>
+        <p><b>Ciri Khas:</b> Kecepatan bertambah/berkurang teratur, jarak bertambah secara kuadratik.</p>
+        
+        <div class="formula-box">
+          Rumus GLBB:<br>
+          v<sub>t</sub> = v<sub>0</sub> + a·t | s = v<sub>0</sub>·t + ½ a·t²
+        </div>
+
+        <!-- Mini Grafik GLBB -->
+        <div class="graph-preview-grid">
+          <div class="graph-item">
+            <div class="graph-title">Grafik v - t (Kecepatan)</div>
+            <svg viewBox="0 0 120 80">
+              <line x1="20" y1="70" x2="110" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <line x1="20" y1="10" x2="20" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <text x="110" y="78" font-size="8" fill="#52665a">t</text>
+              <text x="10" y="15" font-size="8" fill="#52665a">v</text>
+              <line x1="20" y1="60" x2="100" y2="15" stroke="#d88960" stroke-width="2.5"/>
+            </svg>
+            <span class="small" style="font-size: 10px;">v Naik Teratur</span>
+          </div>
+
+          <div class="graph-item">
+            <div class="graph-title">Grafik s - t (Jarak)</div>
+            <svg viewBox="0 0 120 80">
+              <line x1="20" y1="70" x2="110" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <line x1="20" y1="10" x2="20" y2="70" stroke="#52665a" stroke-width="1.5"/>
+              <text x="110" y="78" font-size="8" fill="#52665a">t</text>
+              <text x="10" y="15" font-size="8" fill="#52665a">s</text>
+              <path d="M 20 65 Q 60 60 100 15" stroke="#d88960" stroke-width="2.5" fill="none"/>
+            </svg>
+            <span class="small" style="font-size: 10px;">s Melengkung (Parabola)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>⚖️ Tabel Ringkasan Perbedaan</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Kriteria Perbandingan</th>
+            <th>Gerak Lurus Beraturan (GLB)</th>
+            <th>Gerak Lurus Berubah Beraturan (GLBB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Kecepatan (v)</b></td>
+            <td>Tetap / Konstan</td>
+            <td>Berubah secara teratur</td>
+          </tr>
+          <tr>
+            <td><b>Percepatan (a)</b></td>
+            <td>Nol (a = 0)</td>
+            <td>Tetap / Konstan (a ≠ 0)</td>
+          </tr>
+          <tr>
+            <td><b>Pola Jarak Per Detik</b></td>
+            <td>Sama besar (10m, 10m, 10m...)</td>
+            <td>Meningkat / Menurun (2m, 4m, 6m...)</td>
+          </tr>
+          <tr>
+            <td><b>Bentuk Grafik v-t</b></td>
+            <td>Garis lurus horizontal</td>
+            <td>Garis miring naik atau turun</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SEKSI CONTOH SOAL & ANIMASI -->
+  <section class="card">
+    <h2>🚘 Contoh Soal Interaktif: Dua Mobil Berpapasan (GLB)</h2>
+    <p>Salah satu aplikasi GLB dalam kehidupan sehari-hari adalah menentukan kapan dan di mana dua kendaraan yang saling mendekati akan berpapasan.</p>
+    
+    <div class="mission">
+      <p><b>Soal Kasus Simulasi:</b></p>
+      <p>Mobil <b>A (Hijau)</b> bergerak dari Kota P ke kanan dengan kecepatan tetap <b>15 m/s</b> (GLB). Pada saat yang bersamaan, Mobil <b>B (Oranye)</b> bergerak dari Kota Q ke kiri mendekati Mobil A dengan kecepatan tetap <b>10 m/s</b> (GLB). Jarak antara Kota P dan Kota Q adalah <b>100 meter</b>.</p>
+      <p><i><b>Pertanyaan:</b> Pada detik ke berapa dan pada posisi berapa dari Kota P kedua mobil tersebut akan berpapasan?</i></p>
+    </div>
+
+    <!-- Animasi Canvas -->
+    <div class="anim-container">
+      <h3 style="color:#fff; margin-top:0;">Simulasi Animasi Berpapasan</h3>
+      <canvas id="simCanvas"></canvas>
+      
+      <div class="anim-controls">
+        <button class="primary" onclick="startAnim()">▶️ Jalankan Simulasi</button>
+        <button class="secondary" onclick="pauseAnim()">⏸️ Jeda</button>
+        <button class="orange-btn" onclick="resetAnim()">🔄 Reset</button>
+      </div>
+
+      <div class="anim-info">
+        <div>Waktu (t): <b id="timerTxt" style="color:#4ade80;">0.0 s</b></div>
+        <div>Posisi Mobil A (s<sub>A</sub>): <b id="posATxt" style="color:#4ade80;">0.0 m</b></div>
+        <div>Posisi Mobil B dari P: <b id="posBTxt" style="color:#fb923c;">100.0 m</b></div>
+      </div>
+    </div>
+
+    <h3>📝 Langkah Penyelesaian Matematika</h3>
+    <ol>
+      <li><b>Diketahui:</b> v<sub>A</sub> = 15 m/s, v<sub>B</sub> = 10 m/s, S<sub>total</sub> = 100 m</li>
+      <li><b>Persamaan Berpapasan:</b> <code>S<sub>A</sub> + S<sub>B</sub> = S<sub>total</sub></code></li>
+      <li><b>Substitusi GLB:</b> <code>(15 × t) + (10 × t) = 100 ➡️ 25t = 100 ➡️ t = <b>4 sekon</b></code></li>
+      <li><b>Titik Temu dari Kota P:</b> <code>S<sub>A</sub> = 15 m/s × 4 s = <b>60 meter</b></code></li>
+    </ol>
+  </section>
+
+  <!-- SEKSI CONTOH STUDI KASUS DUNIA NYATA -->
+  <section class="card">
+    <h2>🗺️ Studi Kasus Dunia Nyata (Google Maps & Berita)</h2>
+    <p>Mari kita lihat bagaimana konsep GLB dan GLBB bekerja dalam perjalanan sehari-hari dan peristiwa lalu lintas di dunia nyata.</p>
+
+    <!-- CASE 1: GLB Google Maps -->
+    <div class="case-card gmaps">
+      <h3>📍 Kasus 1 (GLB): Navigasi Google Maps di Jalan Tol Cipularang</h3>
+      <p><b>Situasi:</b> Pengemudi mengaktifkan fitur <i>Cruise Control</i> pada mobilnya saat melintasi trek lurus Jalan Tol Cipularang. Google Maps menampilkan kecepatan kendaraan stabil di angka <b>90 km/jam</b> (sama dengan <b>25 m/s</b>).</p>
+      <p><i><b>Pertanyaan:</b> Jika mobil melaju dengan kecepatan konstan ini selama 12 menit (720 sekon) tanpa hambatan, berapa kilometer jarak yang ditempuh mobil di jalan tol tersebut?</i></p>
+
+      <div class="formula-box">
+        <b>Penyelesaian (GLB):</b><br>
+        • Diketahui: v = 25 m/s, t = 720 s<br>
+        • Rumus: s = v × t<br>
+        • Perhitungan: s = 25 m/s × 720 s = <b>18.000 meter</b> = <b>18 km</b><br>
+        • <b>Kesimpulan:</b> Mobil telah menempuh jarak 18 km sepanjang jalan tol.
+      </div>
+    </div>
+
+    <!-- CASE 2: GLBB Berita Pengereman -->
+    <div class="case-card news">
+      <h3>🚨 Kasus 2 (GLBB): Berita Pengereman Darurat Bus di Jalan Tol</h3>
+      <p><b>Situasi Berita:</b> Sebuah bus pariwisata melaju di Tol Purbaleunyi dengan kecepatan awal <b>108 km/jam</b> (sama dengan <b>30 m/s</b>). Tiba-tiba pengemudi melihat antrean kemacetan di depan sejauh <b>100 meter</b> dan langsung menginjak rem hingga bus mengalami perlambatan konstan sebesar <b>5 m/s²</b> (GLBB diperlambat).</p>
+      <p><i><b>Pertanyaan:</b> Berapa jarak yang dibutuhkan bus hingga benar-benar berhenti? Apakah bus sempat menabrak antrean kemacetan di depannya?</i></p>
+
+      <div class="formula-box">
+        <b>Penyelesaian (GLBB Diperlambat):</b><br>
+        1. <i>Mencari waktu hingga berhenti (v<sub>t</sub> = 0):</i><br>
+        &nbsp;&nbsp;&nbsp;v<sub>t</sub> = v<sub>0</sub> - a·t ➡️ 0 = 30 - 5t ➡️ <b>t = 6 sekon</b><br><br>
+        2. <i>Mencari jarak pengereman (s):</i><br>
+        &nbsp;&nbsp;&nbsp;s = v<sub>0</sub>·t - ½ a·t²<br>
+        &nbsp;&nbsp;&nbsp;s = (30 × 6) - ½ (5 × 6²)<br>
+        &nbsp;&nbsp;&nbsp;s = 180 - (2.5 × 36) = 180 - 90 = <b>90 meter</b><br><br>
+        • <b>Analisis Keselamatan:</b> Bus berhenti sempurna setelah menempuh jarak <b>90 meter</b>. Karena jarak kemacetan di depan adalah 100 meter, bus berhasil berhenti aman dengan sisa jarak <b>10 meter</b> sebelum antrean mobil dan <b>terhindar dari kecelakaan</b>!
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKSI PERCOBAAN / MISI MANDIRI -->
+  <section class="card">
+    <h2>🎯 Misi Penyelidikan di Rumah</h2>
+    <div class="mission">
+      <span class="pill">MISI MANDIRI</span>
+      <p><b>Apakah benda yang kamu amati bergerak dengan kecepatan tetap (GLB) atau mengalami percepatan (GLBB)?</b></p>
+      Amati gerak benda di sekitarmu (mobil-mobilan, bola menggelinding, kelereng, atau tetesan air) atau gunakan data simulasi di bawah ini.
+    </div>
+    <h3>Langkah Kerja Percobaan</h3>
+    <ol>
+      <li>Pilih benda yang aman untuk diamati di rumah.</li>
+      <li>Tentukan titik awal sebagai posisi nol (0 m).</li>
+      <li>Catat posisi benda pada setiap selang waktu 1 detik (detik ke-0 sampai detik ke-5).</li>
+      <li>Isikan data hasil pengamatanmu pada tabel di bawah.</li>
+      <li>Klik <b>"Analisis Gerak"</b> untuk melihat bentuk grafik dan perhitungannya.</li>
+    </ol>
+    <p class="small">Gunakan satuan meter (m) untuk posisi dan sekon (s) untuk waktu. Jika kesulitan mengukur langsung di rumah, kamu bisa menggunakan tombol <b>"Isi Data Contoh"</b>.</p>
+  </section>
+
+  <!-- TABEL PENGAMATAN -->
+  <section class="card">
+    <h2>📋 Tabel Pengamatan Rumah</h2>
+    <p class="small">Isi posisi benda pada setiap waktu. Angka boleh desimal (contoh: 1.5 atau 4.2).</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Waktu (s)</th><th>Posisi Benda (m)</th></tr>
+        </thead>
+        <tbody id="dataTable"></tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <button class="secondary" onclick="isiContoh()">Isi Data Contoh</button>
+      <button class="primary" onclick="analisis()">📈 Analisis Gerak & Buat Grafik</button>
+    </div>
+    <div id="feedbackData" class="result"></div>
+  </section>
+
+  <!-- GRAFIK -->
+  <section class="card">
+    <h2>📈 Grafik Posisi terhadap Waktu (s - t)</h2>
+    <p class="small">Grafik akan digambar secara otomatis berdasarkan data tabel di atas.</p>
+    <svg id="graph" viewBox="0 0 600 340" role="img" aria-label="Grafik posisi terhadap waktu"></svg>
+    <div id="stats" class="stats" style="display:none">
+      <div class="stat"><strong id="perpindahan">—</strong><span>Total Perpindahan (m)</span></div>
+      <div class="stat"><strong id="kecepatan">—</strong><span>Kecepatan Rata-rata (m/s)</span></div>
+      <div class="stat"><strong id="jenis">—</strong><span>Pola Indikasi Gerak</span></div>
+    </div>
+  </section>
+
+  <!-- RUANG ANALISIS -->
+  <section class="card">
+    <h2>🧠 Ruang Analisis Detektif</h2>
+    <label for="q1">1. Bagaimana perubahan posisi benda seiring bertambahnya waktu dari detik ke-0 hingga detik ke-5?</label>
+    <textarea id="q1" rows="3" placeholder="Jelaskan berdasarkan data pengamatan yang kamu dapatkan..."></textarea>
+
+    <label for="q2">2. Berdasarkan pola data dan bentuk grafik di atas, apakah benda mengalami GLB atau GLBB? Sebutkan alasannya!</label>
+    <textarea id="q2" rows="3" placeholder="Tuliskan alasanmu (misal: karena jarak tiap detik sama / karena jarak bertambah makin cepat)..."></textarea>
+
+    <label for="q3">3. Jika gerak benda diteruskan dengan pola yang sama, berapakah perkiraan posisi benda pada detik ke-6?</label>
+    <textarea id="q3" rows="3" placeholder="Tuliskan hasil prediksi dan cara menghitungnya..."></textarea>
+
+    <label for="refleksi">4. Apa kesimpulan yang kamu peroleh dari percobaan ini? Sebutkan juga hal yang masih membuatmu penasaran!</label>
+    <textarea id="refleksi" rows="3" placeholder="Tuliskan kesimpulan dan refleksi belajarmu..."></textarea>
+  </section>
+
+  <!-- PENGUMPULAN & FINISH -->
+  <section class="card">
+    <h2>🏁 Pengumpulan & Penyelesaian Misi</h2>
+    <p>Periksa kembali identitas, data tabel, dan seluruh jawaban analisismu sebelum menyelesaikan tugas.</p>
+    
+    <!-- KONFIGURASI WEB APP DRIVE FOR TEACHER -->
+    <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:10px; margin-bottom:15px; font-size:12px; display:none;">
+      <label for="scriptUrl" style="margin-top:0; color:#166534;">⚙️ Web App Google Apps Script Endpoint (Otomatis Ke Drive Guru):</label>
+      <input type="text" id="scriptUrl" value="https://script.google.com/macros/s/AKfycbzF0Ovj2o0ifdhH7u3ZREAMgO9H5s3tCNcT7MhZrrNMoblCDfwUxrvj5CKSv0gyrH0xTQ/exec" placeholder="Masukkan URL Google Apps Script Web App Guru">
+    </div>
+
+    <div class="actions">
+      <button class="blue-btn" onclick="kirimKeDrive()">🚀 Kirim Otomatis ke Google Drive Guru</button>
+      <button class="secondary" onclick="salinJawaban()">📋 Salin Ringkasan Jawaban Digital</button>
+    </div>
+
+    <div id="statusKirim" class="status-box"></div>
+    <div id="hasilAkhir" class="result"></div>
+
+    <!-- PETUNJUK PENULISAN BUKU CATATAN & CLASSROOM -->
+    <div class="instruction-card">
+      <h3>📌 INSTRUKSI WAJIB PENGUMPULAN TUGAS</h3>
+      <p>Meskipun jawaban sudah terkirim secara otomatis, <b>seluruh murid tetap WAJIB menyalin dan mengunggahnya ke Google Classroom</b> dengan langkah berikut:</p>
+      <ol class="step-list">
+        <li>Klik tombol <b>"Salin Ringkasan Jawaban Digital"</b> di atas.</li>
+        <li><b>TULIS KEMBALI DI BUKU CATATAN FISIKA:</b> Salin tabel pengamatan, grafik sederhana, dan jawaban pertanyaan analisis ke dalam buku catatan tulisan tanganmu secara rapi.</li>
+        <li><b>FOTO BUKU CATATANMU:</b> Ambil foto tulisan tangan di buku catatanmu dengan jelas dan terang.</li>
+        <li><b>UNGGAH KE CLASSROOM:</b> Masuk ke Google Classroom, buka <b>Kantong Tugas Misi Detektif Gerak</b>, lalu unggah/lampirkan foto buku catatanmu tersebut dan klik <i>Hand In / Serahkan</i>.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Detektif Gerak · Media Pembelajaran Fisika · SMAN 1 Pasawahan
+</footer>
+
+<script>
+// --- INITIALIZATION & TABLE BUILDER ---
+const waktu = [0, 1, 2, 3, 4, 5];
+const table = document.getElementById("dataTable");
+
+waktu.forEach((t) => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td><b>${t} s</b></td>
+    <td><input type="number" step="any" id="pos${t}"
+      aria-label="Posisi pada waktu ${t} sekon"
+      placeholder="Meter (m)"></td>`;
+  table.appendChild(tr);
+});
+
+function ambilData() {
+  return waktu.map(t => {
+    const value = document.getElementById("pos" + t).value.trim();
+    return value === "" ? null : Number(value);
+  });
+}
+
+function isiContoh() {
+  waktu.forEach(t => {
+    document.getElementById("pos" + t).value = t * t;
+  });
+  analisis();
+}
+
+// --- GRAPH RENDERING ---
+function tampilkanGrafik(data) {
+  const svg = document.getElementById("graph");
+  const valid = data.every(v => v !== null && Number.isFinite(v));
+
+  if (!valid) {
+    svg.innerHTML = `
+      <text x="300" y="160" text-anchor="middle"
+        fill="#718078" font-size="15">Masukkan data lengkap dari 0-5 sekon, lalu klik</text>
+      <text x="300" y="185" text-anchor="middle"
+        fill="#718078" font-size="15">“Analisis Gerak & Buat Grafik”.</text>`;
+    return;
+  }
+
+  const minY = Math.min(0, ...data);
+  const maxY = Math.max(1, ...data);
+  const rangeY = maxY - minY || 1;
+  const left = 58, right = 565, top = 25, bottom = 275;
+  const x = t => left + (t / 5) * (right - left);
+  const y = v => bottom - ((v - minY) / rangeY) * (bottom - top);
+
+  let out = "";
+  for (let i = 0; i <= 5; i++) {
+    const xx = x(i);
+    out += `<line x1="${xx}" y1="${top}" x2="${xx}" y2="${bottom}" stroke="#e5ece6"/>`;
+    out += `<text x="${xx}" y="${bottom + 23}" text-anchor="middle" font-size="12" fill="#52665a">${i}</text>`;
+  }
+  for (let i = 0; i <= 4; i++) {
+    const value = minY + (rangeY * i / 4);
+    const yy = y(value);
+    out += `<line x1="${left}" y1="${yy}" x2="${right}" y2="${yy}" stroke="#e5ece6"/>`;
+    out += `<text x="${left - 9}" y="${yy + 4}" text-anchor="end" font-size="11" fill="#52665a">${Number(value.toFixed(2))}</text>`;
+  }
+
+  out += `<line x1="${left}" y1="${bottom}" x2="${right}" y2="${bottom}" stroke="#52665a" stroke-width="1.5"/>`;
+  out += `<line x1="${left}" y1="${top}" x2="${left}" y2="${bottom}" stroke="#52665a" stroke-width="1.5"/>`;
+  out += `<text x="310" y="325" text-anchor="middle" font-size="13" fill="#243b30">Waktu t (sekon)</text>`;
+  out += `<text x="17" y="150" text-anchor="middle" font-size="13" fill="#243b30" transform="rotate(-90 17 150)">Posisi s (meter)</text>`;
+
+  const points = data.map((v, i) => `${x(i)},${y(v)}`).join(" ");
+  out += `<polyline points="${points}" fill="none" stroke="#36765b" stroke-width="3" stroke-linejoin="round"/>`;
+  data.forEach((v, i) => {
+    out += `<circle cx="${x(i)}" cy="${y(v)}" r="5" fill="#d88960" stroke="white" stroke-width="2"/>`;
+  });
+  svg.innerHTML = out;
+}
+
+function analisis() {
+  const data = ambilData();
+  const feedback = document.getElementById("feedbackData");
+
+  if (data.some(v => v === null || !Number.isFinite(v))) {
+    feedback.style.display = "block";
+    feedback.className = "result";
+    feedback.textContent = "⚠️ Lengkapi semua kolom posisi dari detik ke-0 sampai detik ke-5 terlebih dahulu.";
+    return false;
+  }
+
+  const perpindahan = data[data.length - 1] - data[0];
+  const kecepatan = perpindahan / 5;
+  const interval = data.slice(1).map((v, i) => v - data[i]);
+  const sama = interval.every(v => Math.abs(v - interval[0]) < 0.000001);
+  const jenis = sama ? "Indikasi GLB" : "Indikasi GLBB / Lainnya";
+
+  document.getElementById("perpindahan").textContent = perpindahan.toFixed(2);
+  document.getElementById("kecepatan").textContent = kecepatan.toFixed(2);
+  document.getElementById("jenis").textContent = jenis;
+  document.getElementById("stats").style.display = "grid";
+  tampilkanGrafik(data);
+
+  feedback.style.display = "block";
+  feedback.className = "result";
+  feedback.innerHTML = `
+    <b>✅ Hasil Analisis Data:</b><br>
+    • Total Perpindahan: <b>${perpindahan.toFixed(2)} meter</b>.<br>
+    • Kecepatan Rata-rata: <b>${kecepatan.toFixed(2)} m/s</b>.<br>
+    • Perubahan posisi tiap 1 detik: <b>${interval.map(v => v.toFixed(2)).join(", ")} meter</b>.<br>
+    <span class="small">*Catatan: Jika selisih posisi tiap detik selalu sama konstan, maka gerak adalah GLB. Jika selisih posisi bertambah/berkurang secara teratur, maka merupakan GLBB.</span>`;
+  return true;
+}
+
+// --- CANVAS ANIMATION FOR CAR MEETING ---
+const canvas = document.getElementById("simCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 600;
+canvas.height = 180;
+
+let animState = {
+  running: false,
+  t: 0,
+  vA: 15,
+  vB: 10,
+  distTotal: 100,
+  animId: null
+};
+
+function drawScene() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#334155";
+  ctx.fillRect(0, 60, canvas.width, 70);
+  
+  ctx.strokeStyle = "#fbbf24";
+  ctx.lineWidth = 2;
+  ctx.setLineDash([15, 15]);
+  ctx.beginPath();
+  ctx.moveTo(0, 95);
+  ctx.lineTo(canvas.width, 95);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  const leftMargin = 60;
+  const roadWidth = 480;
+  const posA_px = leftMargin + (animState.t * animState.vA / animState.distTotal) * roadWidth;
+  const posB_px = leftMargin + ((animState.distTotal - animState.t * animState.vB) / animState.distTotal) * roadWidth;
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "12px Poppins, sans-serif";
+  ctx.fillText("Kota P (0m)", leftMargin - 30, 45);
+  ctx.fillText("Kota Q (100m)", leftMargin + roadWidth - 30, 45);
+
+  drawCar(posA_px, 72, "#22c55e", "Mobil A");
+  drawCar(posB_px, 102, "#f97316", "Mobil B", true);
+
+  if (animState.t >= 4.0) {
+    ctx.fillStyle = "#ef4444";
+    ctx.beginPath();
+    ctx.arc(posA_px, 95, 18, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 11px Poppins";
+    ctx.textAlign = "center";
+    ctx.fillText("BERTEMU!", posA_px, 99);
+    ctx.textAlign = "start";
+  }
+
+  const currentSA = Math.min(60, animState.t * animState.vA);
+  const currentSB = Math.max(60, animState.distTotal - animState.t * animState.vB);
+  
+  document.getElementById("timerTxt").textContent = animState.t.toFixed(1) + " s";
+  document.getElementById("posATxt").textContent = currentSA.toFixed(1) + " m";
+  document.getElementById("posBTxt").textContent = currentSB.toFixed(1) + " m";
+}
+
+function drawCar(x, y, color, label, isLeft = false) {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.roundRect(x - 20, y - 10, 40, 20, 5);
+  ctx.fill();
+
+  ctx.fillStyle = "#000";
+  ctx.beginPath();
+  ctx.arc(x - 12, y + 10, 4, 0, Math.PI * 2);
+  ctx.arc(x + 12, y + 10, 4, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = "#fff";
+  ctx.font = "bold 10px Poppins";
+  ctx.fillText(label, x - 18, y - 14);
+}
+
+function updateAnim() {
+  if (!animState.running) return;
+  
+  animState.t += 0.03;
+  if (animState.t >= 4.0) {
+    animState.t = 4.0;
+    animState.running = false;
+  }
+  
+  drawScene();
+
+  if (animState.running) {
+    animState.animId = requestAnimationFrame(updateAnim);
+  }
+}
+
+function startAnim() {
+  if (animState.t >= 4.0) animState.t = 0;
+  if (!animState.running) {
+    animState.running = true;
+    updateAnim();
+  }
+}
+
+function pauseAnim() {
+  animState.running = false;
+  if (animState.animId) cancelAnimationFrame(animState.animId);
+}
+
+function resetAnim() {
+  pauseAnim();
+  animState.t = 0;
+  drawScene();
+}
+
+drawScene();
+
+// --- AUTOMATIC GOOGLE DRIVE SCRIPT SUBMISSION ---
+function kirimKeDrive() {
+  const nama = document.getElementById("nama").value.trim();
+  const kelas = document.getElementById("kelas").value;
+  const absen = document.getElementById("absen").value.trim();
+  const scriptUrl = document.getElementById("scriptUrl").value.trim();
+  const dataPosisi = ambilData();
+  const q1 = document.getElementById("q1").value.trim();
+  const q2 = document.getElementById("q2").value.trim();
+  const q3 = document.getElementById("q3").value.trim();
+  const refleksi = document.getElementById("refleksi").value.trim();
+
+  const statusBox = document.getElementById("statusKirim");
+  statusBox.style.display = "block";
+
+  if (!nama || !kelas || !absen) {
+    statusBox.className = "status-box status-error";
+    statusBox.innerHTML = "❌ <b>Identitas Belum Lengkap!</b> Mohon isi Nama, Kelas, dan Nomor Absen di bagian atas.";
+    return;
+  }
+
+  if (dataPosisi.some(v => v === null)) {
+    statusBox.className = "status-box status-error";
+    statusBox.innerHTML = "❌ <b>Tabel Belum Lengkap!</b> Lengkapi data pengamatan posisi dari detik ke-0 hingga ke-5.";
+    return;
+  }
+
+  if (!q1 || !q2 || !q3 || !refleksi) {
+    statusBox.className = "status-box status-error";
+    statusBox.innerHTML = "❌ <b>Ruang Analisis Belum Lengkap!</b> Mohon jawab pertanyaan 1 sampai 4.";
+    return;
+  }
+
+  statusBox.className = "status-box status-loading";
+  statusBox.innerHTML = "⏳ <b>Sedang Mengirim Data Jawaban ke Google Drive Guru...</b> Mohon tunggu sebentar.";
+
+  const payload = {
+    timestamp: new Date().toLocaleString("id-ID"),
+    nama: nama,
+    kelas: kelas,
+    absen: absen,
+    tabel_posisi: dataPosisi.join(", "),
+    analisis_q1: q1,
+    analisis_q2: q2,
+    analisis_q3: q3,
+    refleksi: refleksi
+  };
+
+  fetch(scriptUrl, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(payload)
+  })
+  .then(() => {
+    statusBox.className = "status-box status-success";
+    statusBox.innerHTML = `
+      ✅ <b>BERHASIL TERKIRIM!</b><br>
+      Jawaban digital milik <b>${aman(nama)} (${aman(kelas)})</b> telah berhasil dikirimkan ke Google Drive/Spreadsheet Guru.<br>
+      👇 <i>Langkah berikutnya: Jangan lupa untuk menyalin jawaban, menulis di buku catatan, dan mengunggah foto ke Google Classroom.</i>`;
+  })
+  .catch(err => {
+    statusBox.className = "status-box status-error";
+    statusBox.innerHTML = "⚠️ <b>Gagal Mengirim Otomatis.</b> Pastikan koneksi internet aktif atau gunakan tombol 'Salin Ringkasan Jawaban Digital' di bawah.";
+  });
+}
+
+// --- SUMMARY COPY FUNCTION ---
+function salinJawaban() {
+  const nama = document.getElementById("nama").value.trim();
+  const kelas = document.getElementById("kelas").value;
+  const absen = document.getElementById("absen").value;
+  const data = ambilData();
+  const jawaban = ["q1", "q2", "q3", "refleksi"].map(id =>
+    document.getElementById(id).value.trim()
+  );
+
+  const ringkasan = [
+    "------------------------------------------",
+    "MISI DETEKTIF GERAK - FISIKA SMANPAS",
+    "------------------------------------------",
+    "Identitas Siswa:",
+    "Nama     : " + (nama || "-"),
+    "Kelas    : " + (kelas || "-"),
+    "No. Absen: " + (absen || "-"),
+    "",
+    "Tabel Pengamatan Posisi (m):",
+    ...waktu.map((t, i) => `  - t = ${t} s: ${data[i] ?? "(kosong)"} m`),
+    "",
+    "Hasil Analisis Pertanyaan:",
+    "1. Perubahan Posisi:",
+    "   " + (jawaban[0] || "-"),
+    "2. Jenis Gerak (GLB/GLBB) & Alasan:",
+    "   " + (jawaban[1] || "-"),
+    "3. Prediksi Posisi Detik ke-6:",
+    "   " + (jawaban[2] || "-"),
+    "4. Kesimpulan & Refleksi Belajar:",
+    "   " + (jawaban[3] || "-"),
+    "------------------------------------------"
+  ].join("\n");
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(ringkasan)
+      .then(() => alert("📋 Ringkasan jawaban berhasil disalin!\n\nSilakan catat/tempel ringkasan ini di buku catatan Fisika kamu untuk difoto dan diunggah ke Google Classroom."))
+      .catch(() => salinManual(ringkasan));
+  } else {
+    salinManual(ringkasan);
+  }
+}
+
+function salinManual(teks) {
+  const area = document.createElement("textarea");
+  area.value = teks;
+  area.style.position = "fixed";
+  area.style.opacity = "0";
+  document.body.appendChild(area);
+  area.select();
+  try {
+    document.execCommand("copy");
+    alert("📋 Ringkasan disalin ke clipboard! Silakan catat di buku catatanmu.");
+  } catch {
+    alert("⚠️ Penyalinan otomatis tidak didukung peramban. Silakan pilih dan salin teks secara manual.");
+  }
+  area.remove();
+}
+
+function aman(teks) {
+  return String(teks).replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  })[c]);
+}
+
+tampilkanGrafik([null, null, null, null, null, null]);
+</script>
+</body>
+</html>
