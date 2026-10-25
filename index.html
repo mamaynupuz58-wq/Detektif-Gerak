@@ -172,7 +172,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
   line-height: 1.7;
 }
 
-/* Materi & Comparison Styles */
 .materi-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -207,7 +206,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
   border-radius: 4px;
 }
 
-/* Canvas Animation Styles */
 .anim-container {
   background: #2d3748;
   border-radius: 14px;
@@ -241,7 +239,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
   font-size: 13px;
 }
 
-/* Instructions Banner */
 .instruction-card {
   background: #fff7ed;
   border: 2px dashed #f97316;
@@ -262,15 +259,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
   font-size: 14px;
 }
 
-.notice {
-  padding: 12px 15px;
-  background: #fff4e7;
-  color: #87542d;
-  border-radius: 10px;
-  font-size: 13px;
-  border-left: 4px solid var(--orange);
-}
-
 .status-box {
   margin-top: 12px;
   padding: 12px;
@@ -282,7 +270,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
 .status-loading { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
 .status-error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
 
-/* Gaya untuk Mini Grafik Materi GLB & GLBB */
 .graph-preview-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -308,6 +295,15 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
   display: block;
 }
 
+.sub-form-box {
+  background: #f8faf7;
+  border: 1px solid #dbe6dd;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
 @media (max-width: 650px) {
   .identity { grid-template-columns: 1fr 1fr; }
   .identity .full { grid-column: 1 / -1; }
@@ -326,7 +322,7 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
     <h1>Detektif Gerak</h1>
     <p>Pelajari konsepnya, amati simulasi visualnya, selidiki gerak benda, dan kirimkan bukti penyelidikanmu!</p>
     <p><b>Fisika SMAN 1 Pasawahan</b> · GLB & GLBB</p>
-    <p style="font-size: 13px; margin-top: 6px; opacity: 0.95;"> <b>Guru Mata Pelajaran:</b> Mamay Nurmala Nupuz, S.Pd.</p>
+    <p style="font-size: 13px; margin-top: 6px; opacity: 0.95;">👩‍🏫 <b>Guru Mata Pelajaran:</b> Mamay Nurmala Nupuz, S.Pd.</p>
   </div>
 </header>
 
@@ -374,7 +370,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
           s = v × t
         </div>
 
-        <!-- Mini Grafik GLB -->
         <div class="graph-preview-grid">
           <div class="graph-item">
             <div class="graph-title">Grafik v - t (Kecepatan)</div>
@@ -413,7 +408,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
           v<sub>t</sub> = v<sub>0</sub> + a·t | s = v<sub>0</sub>·t + ½ a·t²
         </div>
 
-        <!-- Mini Grafik GLBB -->
         <div class="graph-preview-grid">
           <div class="graph-item">
             <div class="graph-title">Grafik v - t (Kecepatan)</div>
@@ -489,7 +483,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
       <p><i><b>Pertanyaan:</b> Pada detik ke berapa dan pada posisi berapa dari Kota P kedua mobil tersebut akan berpapasan?</i></p>
     </div>
 
-    <!-- Animasi Canvas -->
     <div class="anim-container">
       <h3 style="color:#fff; margin-top:0;">Simulasi Animasi Berpapasan</h3>
       <canvas id="simCanvas"></canvas>
@@ -521,7 +514,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
     <h2>🗺️ Studi Kasus Dunia Nyata (Google Maps & Berita)</h2>
     <p>Mari kita lihat bagaimana konsep GLB dan GLBB bekerja dalam perjalanan sehari-hari dan peristiwa lalu lintas di dunia nyata.</p>
 
-    <!-- CASE 1: GLB Google Maps -->
     <div class="case-card gmaps">
       <h3>📍 Kasus 1 (GLB): Navigasi Google Maps di Jalan Tol Cipularang</h3>
       <p><b>Situasi:</b> Pengemudi mengaktifkan fitur <i>Cruise Control</i> pada mobilnya saat melintasi trek lurus Jalan Tol Cipularang. Google Maps menampilkan kecepatan kendaraan stabil di angka <b>90 km/jam</b> (sama dengan <b>25 m/s</b>).</p>
@@ -536,7 +528,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
       </div>
     </div>
 
-    <!-- CASE 2: GLBB Berita Pengereman -->
     <div class="case-card news">
       <h3>🚨 Kasus 2 (GLBB): Berita Pengereman Darurat Bus di Jalan Tol</h3>
       <p><b>Situasi Berita:</b> Sebuah bus pariwisata melaju di Tol Purbaleunyi dengan kecepatan awal <b>108 km/jam</b> (sama dengan <b>30 m/s</b>). Tiba-tiba pengemudi melihat antrean kemacetan di depan sejauh <b>100 meter</b> dan langsung menginjak rem hingga bus mengalami perlambatan konstan sebesar <b>5 m/s²</b> (GLBB diperlambat).</p>
@@ -619,6 +610,29 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
 
     <label for="refleksi">4. Apa kesimpulan yang kamu peroleh dari percobaan ini? Sebutkan juga hal yang masih membuatmu penasaran!</label>
     <textarea id="refleksi" rows="3" placeholder="Tuliskan kesimpulan dan refleksi belajarmu..."></textarea>
+
+    <!-- SOAL TAMBAHAN 1: BUGATTI VEYRON -->
+    <label for="bugatti_dik">5. 🏎️ <b>Soal Tantangan GLBB: Bugatti Veyron Super Sport</b></label>
+    <p class="small" style="margin-top:-4px;">Mobil Bugatti Veyron Super Sport dapat berubah dari keadaan diam hingga mencapai kelajuan <b>95 km/jam</b> dalam waktu <b>2 detik</b>. Berapa jarak tempuh mobil saat mencapai kelajuan tersebut?</p>
+    <div class="sub-form-box">
+      <label for="bugatti_dik" style="margin-top:0;">a. Diketahui:</label>
+      <input id="bugatti_dik" placeholder="Contoh: v0 = 0 m/s, vt = 95 km/jam = ... m/s, t = 2 s">
+
+      <label for="bugatti_dit">b. Ditanyakan:</label>
+      <input id="bugatti_dit" placeholder="Contoh: Jarak tempuh (s) = ...?">
+
+      <label for="bugatti_jawab">c. Penyelesaian & Jawaban Akhir:</label>
+      <textarea id="bugatti_jawab" rows="3" placeholder="Tuliskan rumus percepatan (a), rumus jarak (s), dan langkah pengerjaannya sampai ketemu jawaban akhir dalam meter..."></textarea>
+    </div>
+
+    <!-- SOAL TAMBAHAN 2: ROLEPLAY PENGACARA FISIKA -->
+    <label for="q_pengacara">6. ⚖️ <b>Studi Kasus Pembelaan Hukum: Pengacara & Konsep Fisika</b></label>
+    <p class="small" style="margin-top:-4px;"><b>Kasus Pengadilan:</b> Posisikan dirimu sebagai seorang pengacara yang membela Klien (Pengemudi A) di pengadilan karena dituduh berkendara melebihi batas kecepatan.</p>
+    <p class="small" style="background:#fff3cd; padding:8px 12px; border-radius:8px; color:#856404; border-left:3px solid #ffeeba;">
+      📌 <b>Latar Belakang Kasus:</b> Polisi menduga Pengemudi A mengebut karena kendaraannya berada tepat bersebelahan dengan kendaraan lain yang melaju melebihi batas kecepatan. Pengemudi A membantah dan menyatakan dia berkendara normal, melainkan kendaraan keduabah yang menyalipnya. Namun, Jaksa Penuntut membantah dengan argumen: <i>"Jika dua kendaraan berada tepat berpapasan/bersebelahan, maka laju (kecepatan) keduanya PASTI sama."</i>
+    </p>
+    <label for="q_pengacara">Sebagai pengacara, argumen fisika apa yang akan kamu ungkapkan di depan hakim untuk mematahkan pendapat penuntut agar Pengemudi A bebas dari tuduhan?</label>
+    <textarea id="q_pengacara" rows="4" placeholder="Gunakan konsep kelajuan relatif, posisi menyalip, atau konsep GLB/GLBB untuk menyusun argumen pembelaanmu..."></textarea>
   </section>
 
   <!-- PENGUMPULAN & FINISH -->
@@ -626,7 +640,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
     <h2>🏁 Pengumpulan & Penyelesaian Misi</h2>
     <p>Periksa kembali identitas, data tabel, dan seluruh jawaban analisismu sebelum menyelesaikan tugas.</p>
     
-    <!-- KONFIGURASI WEB APP DRIVE FOR TEACHER -->
     <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:10px; margin-bottom:15px; font-size:12px; display:none;">
       <label for="scriptUrl" style="margin-top:0; color:#166534;">⚙️ Web App Google Apps Script Endpoint (Otomatis Ke Drive Guru):</label>
       <input type="text" id="scriptUrl" value="https://script.google.com/macros/s/AKfycbzF0Ovj2o0ifdhH7u3ZREAMgO9H5s3tCNcT7MhZrrNMoblCDfwUxrvj5CKSv0gyrH0xTQ/exec" placeholder="Masukkan URL Google Apps Script Web App Guru">
@@ -634,19 +647,25 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
 
     <div class="actions">
       <button class="blue-btn" onclick="kirimKeDrive()">🚀 Kirim Otomatis ke Google Drive Guru</button>
-      <button class="secondary" onclick="salinJawaban()">📋 Salin Ringkasan Jawaban Digital</button>
+      <button class="secondary" onclick="salinJawaban()">📋 Salin & Tampilkan Ringkasan Jawaban Digital</button>
     </div>
 
     <div id="statusKirim" class="status-box"></div>
     <div id="hasilAkhir" class="result"></div>
 
-    <!-- PETUNJUK PENULISAN BUKU CATATAN & CLASSROOM -->
+    <!-- KOTAK TAMPILAN RINGKASAN JAWABAN (DITAMPILKAN DI LAYAR SAMA) -->
+    <div id="displayRingkasan" style="display:none; margin-top:16px; background:#f0fdf4; border:2px solid #a7f3d0; padding:16px; border-radius:14px;">
+      <label style="margin-top:0; color:#166534; font-size:14px;">📝 <b>Ringkasan Jawaban Siswa (Sudah Tersalin ke Clipboard):</b></label>
+      <p class="small" style="margin-bottom:8px; color:#15803d;">Teks di bawah ini sudah tersalin. Siswa bisa membaca langsung dari kotak di bawah ini untuk dicatat ke dalam buku catatan Fisika:</p>
+      <textarea id="txtRingkasan" rows="12" readonly style="background:#ffffff; font-family:monospace; font-size:12px; color:#243b30; border:1px solid #bbf7d0;"></textarea>
+    </div>
+
     <div class="instruction-card">
       <h3>📌 INSTRUKSI WAJIB PENGUMPULAN TUGAS</h3>
       <p>Meskipun jawaban sudah terkirim secara otomatis, <b>seluruh murid tetap WAJIB menyalin dan mengunggahnya ke Google Classroom</b> dengan langkah berikut:</p>
       <ol class="step-list">
-        <li>Klik tombol <b>"Salin Ringkasan Jawaban Digital"</b> di atas.</li>
-        <li><b>TULIS KEMBALI DI BUKU CATATAN FISIKA:</b> Salin tabel pengamatan, grafik sederhana, dan jawaban pertanyaan analisis ke dalam buku catatan tulisan tanganmu secara rapi.</li>
+        <li>Klik tombol <b>"Salin & Tampilkan Ringkasan Jawaban Digital"</b> di atas.</li>
+        <li><b>TULIS KEMBALI DI BUKU CATATAN FISIKA:</b> Baca teks dari kotak ringkasan di atas, lalu salin tabel pengamatan dan jawaban pertanyaan ke dalam buku catatan tulisan tanganmu secara rapi.</li>
         <li><b>FOTO BUKU CATATANMU:</b> Ambil foto tulisan tangan di buku catatanmu dengan jelas dan terang.</li>
         <li><b>UNGGAH KE CLASSROOM:</b> Masuk ke Google Classroom, buka <b>Kantong Tugas Misi Detektif Gerak</b>, lalu unggah/lampirkan foto buku catatanmu tersebut dan klik <i>Hand In / Serahkan</i>.</li>
       </ol>
@@ -659,7 +678,6 @@ button:hover { transform: translateY(-1px); filter: brightness(1.05); }
 </footer>
 
 <script>
-// --- INITIALIZATION & TABLE BUILDER ---
 const waktu = [0, 1, 2, 3, 4, 5];
 const table = document.getElementById("dataTable");
 
@@ -687,7 +705,6 @@ function isiContoh() {
   analisis();
 }
 
-// --- GRAPH RENDERING ---
 function tampilkanGrafik(data) {
   const svg = document.getElementById("graph");
   const valid = data.every(v => v !== null && Number.isFinite(v));
@@ -897,6 +914,11 @@ function kirimKeDrive() {
   const q2 = document.getElementById("q2").value.trim();
   const q3 = document.getElementById("q3").value.trim();
   const refleksi = document.getElementById("refleksi").value.trim();
+  
+  const bugattiDik = document.getElementById("bugatti_dik").value.trim();
+  const bugattiDit = document.getElementById("bugatti_dit").value.trim();
+  const bugattiJawab = document.getElementById("bugatti_jawab").value.trim();
+  const qPengacara = document.getElementById("q_pengacara").value.trim();
 
   const statusBox = document.getElementById("statusKirim");
   statusBox.style.display = "block";
@@ -913,9 +935,9 @@ function kirimKeDrive() {
     return;
   }
 
-  if (!q1 || !q2 || !q3 || !refleksi) {
+  if (!q1 || !q2 || !q3 || !refleksi || !bugattiJawab || !qPengacara) {
     statusBox.className = "status-box status-error";
-    statusBox.innerHTML = "❌ <b>Ruang Analisis Belum Lengkap!</b> Mohon jawab pertanyaan 1 sampai 4.";
+    statusBox.innerHTML = "❌ <b>Ruang Analisis Belum Lengkap!</b> Mohon jawab seluruh pertanyaan nomor 1 sampai 6.";
     return;
   }
 
@@ -931,7 +953,11 @@ function kirimKeDrive() {
     analisis_q1: q1,
     analisis_q2: q2,
     analisis_q3: q3,
-    refleksi: refleksi
+    refleksi: refleksi,
+    bugatti_diketahui: bugattiDik,
+    bugatti_ditanyakan: bugattiDit,
+    bugatti_jawaban: bugattiJawab,
+    argumen_pengacara: qPengacara
   };
 
   fetch(scriptUrl, {
@@ -953,7 +979,7 @@ function kirimKeDrive() {
   });
 }
 
-// --- SUMMARY COPY FUNCTION ---
+// --- SUMMARY COPY & DISPLAY FUNCTION ---
 function salinJawaban() {
   const nama = document.getElementById("nama").value.trim();
   const kelas = document.getElementById("kelas").value;
@@ -962,6 +988,10 @@ function salinJawaban() {
   const jawaban = ["q1", "q2", "q3", "refleksi"].map(id =>
     document.getElementById(id).value.trim()
   );
+  const bugattiDik = document.getElementById("bugatti_dik").value.trim();
+  const bugattiDit = document.getElementById("bugatti_dit").value.trim();
+  const bugattiJawab = document.getElementById("bugatti_jawab").value.trim();
+  const qPengacara = document.getElementById("q_pengacara").value.trim();
 
   const ringkasan = [
     "------------------------------------------",
@@ -984,12 +1014,28 @@ function salinJawaban() {
     "   " + (jawaban[2] || "-"),
     "4. Kesimpulan & Refleksi Belajar:",
     "   " + (jawaban[3] || "-"),
+    "",
+    "5. Hitungan Bugatti Veyron (GLBB):",
+    "   - Diketahui : " + (bugattiDik || "-"),
+    "   - Ditanyakan: " + (bugattiDit || "-"),
+    "   - Jawaban   : " + (bugattiJawab || "-"),
+    "",
+    "6. Pembelaan Pengacara Fisika:",
+    "   " + (qPengacara || "-"),
     "------------------------------------------"
   ].join("\n");
 
+  // Tampilkan Teks di Kotak Layar
+  const boxDisplay = document.getElementById("displayRingkasan");
+  const txtArea = document.getElementById("txtRingkasan");
+  txtArea.value = ringkasan;
+  boxDisplay.style.display = "block";
+  boxDisplay.scrollIntoView({ behavior: "smooth" });
+
+  // Salin ke Clipboard
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(ringkasan)
-      .then(() => alert("📋 Ringkasan jawaban berhasil disalin!\n\nSilakan catat/tempel ringkasan ini di buku catatan Fisika kamu untuk difoto dan diunggah ke Google Classroom."))
+      .then(() => alert("📋 Ringkasan jawaban berhasil disalin dan ditampilkan di layar!\n\nSilakan baca dari kotak hijau di bawah untuk dicatat ke dalam buku catatanmu."))
       .catch(() => salinManual(ringkasan));
   } else {
     salinManual(ringkasan);
@@ -1005,9 +1051,9 @@ function salinManual(teks) {
   area.select();
   try {
     document.execCommand("copy");
-    alert("📋 Ringkasan disalin ke clipboard! Silakan catat di buku catatanmu.");
+    alert("📋 Ringkasan disalin ke clipboard dan ditampilkan di layar! Silakan catat di buku catatanmu.");
   } catch {
-    alert("⚠️ Penyalinan otomatis tidak didukung peramban. Silakan pilih dan salin teks secara manual.");
+    alert("⚠️ Penyalinan otomatis tidak didukung peramban, namun teks ringkasan sudah tampil di layar untuk dicatat.");
   }
   area.remove();
 }
